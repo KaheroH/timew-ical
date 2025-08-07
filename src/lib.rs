@@ -105,7 +105,7 @@ impl TimeData {
         self.entries.iter()
         .map(|entry|
             Event::new()
-                .summary(&entry.tags[0])
+                .summary(&format!(",{}", &entry.tags[0]))
                 .description(&entry.tags[1..].join(","))
                 .starts(CalendarDateTime::from(entry.start))
                 .ends(CalendarDateTime::from(entry.end))
