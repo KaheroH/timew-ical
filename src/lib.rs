@@ -105,7 +105,9 @@ impl TimeData {
         self.entries.iter()
         .map(|entry|
             Event::new()
-                .summary(&format!(",{}", &entry.tags[0]))
+                // Doing this because Delorean seems to only import the string after a ", ".
+                // Likely because Outlook.
+                .summary(&format!(", {}", &entry.tags[0]))
                 .description(&entry.tags[1..].join(","))
                 .starts(CalendarDateTime::from(entry.start))
                 .ends(CalendarDateTime::from(entry.end))
