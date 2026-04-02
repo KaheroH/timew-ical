@@ -1,8 +1,8 @@
 use clap::Parser;
-use timew_ical::*;
-use parse_datetime::parse_datetime;
 use icalendar::Calendar;
+use parse_datetime::parse_datetime;
 use std::fs;
+use timew_ical::*;
 
 fn main() -> Result<(), std::io::Error> {
     let args = Arguments::parse();
@@ -15,7 +15,6 @@ fn main() -> Result<(), std::io::Error> {
     let time_data: TimeData = timew_string.into();
     let calendar: Calendar = time_data.create_calendar();
 
-    fs::write("/home/kahero/time_logging.ics", format!("{calendar}"))?;
+    fs::write("/home/kaheroh/time_logging.ics", format!("{calendar}"))?;
     Ok(())
 }
-
